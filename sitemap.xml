@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiangyixiong.top/2020/08/04/Shiro%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0REST%E9%A3%8E%E6%A0%BCAPI%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2020-08-04</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jiangyixiong.top/2020/08/03/Shiro%E4%BD%BF%E7%94%A8%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89realm/</loc>
     
     <lastmod>2020-08-03</lastmod>
@@ -60,7 +67,7 @@
 
   <url>
     <loc>http://jiangyixiong.top/</loc>
-    <lastmod>2020-08-03</lastmod>
+    <lastmod>2020-08-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -70,14 +77,14 @@
   
   <url>
     <loc>http://jiangyixiong.top/categories/podcast/</loc>
-    <lastmod>2020-08-03</lastmod>
+    <lastmod>2020-08-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/categories/blog/</loc>
-    <lastmod>2020-08-03</lastmod>
+    <lastmod>2020-08-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
