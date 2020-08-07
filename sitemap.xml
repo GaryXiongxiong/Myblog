@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiangyixiong.top/2020/08/07/Hear%E4%B8%8D%E5%90%8CS01E04%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A%EF%BC%9A%E5%81%9A%E6%92%AD%E5%AE%A2%E5%92%8C%E4%BA%BA%E7%94%9F%E4%B8%80%E6%A0%B7%E9%9A%BE%EF%BC%81/</loc>
+    
+    <lastmod>2020-08-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jiangyixiong.top/2020/08/04/Shiro%E9%80%9A%E8%BF%87%E6%B3%A8%E8%A7%A3%E5%AE%9E%E7%8E%B0REST%E9%A3%8E%E6%A0%BCAPI%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/</loc>
     
     <lastmod>2020-08-04</lastmod>
@@ -67,7 +74,7 @@
 
   <url>
     <loc>http://jiangyixiong.top/</loc>
-    <lastmod>2020-08-04</lastmod>
+    <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -77,14 +84,14 @@
   
   <url>
     <loc>http://jiangyixiong.top/categories/podcast/</loc>
-    <lastmod>2020-08-04</lastmod>
+    <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/categories/blog/</loc>
-    <lastmod>2020-08-04</lastmod>
+    <lastmod>2020-08-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
