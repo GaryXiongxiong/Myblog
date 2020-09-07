@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jiangyixiong.top/2020/09/07/Spring-Cloud-OpenFeign-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</loc>
+    
+    <lastmod>2020-09-07</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jiangyixiong.top/2020/09/03/Kafka-%E6%B6%88%E8%B4%B9%E8%80%85%E7%AF%87/</loc>
     
     <lastmod>2020-09-04</lastmod>
@@ -109,7 +116,7 @@
 
   <url>
     <loc>http://jiangyixiong.top/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -117,35 +124,42 @@
   
   <url>
     <loc>http://jiangyixiong.top/tags/Hear%E4%B8%8D%E5%90%8C/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/tags/Nginx/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/tags/Shiro/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/tags/Algorithm/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/tags/Kafka/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://jiangyixiong.top/tags/Spring-Cloud/</loc>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -154,14 +168,14 @@
   
   <url>
     <loc>http://jiangyixiong.top/categories/podcast/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://jiangyixiong.top/categories/blog/</loc>
-    <lastmod>2020-09-04</lastmod>
+    <lastmod>2020-09-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
