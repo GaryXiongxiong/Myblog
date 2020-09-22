@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiangyixiong.top/"/>
-  <updated>2020-09-21T07:18:36.614Z</updated>
+  <updated>2020-09-22T08:12:11.841Z</updated>
   <id>http://jiangyixiong.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JWT原理与使用场景示例</title>
+    <link href="http://jiangyixiong.top/2020/09/22/JWT%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E7%A4%BA%E4%BE%8B/"/>
+    <id>http://jiangyixiong.top/2020/09/22/JWT%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E7%A4%BA%E4%BE%8B/</id>
+    <published>2020-09-22T07:09:15.000Z</published>
+    <updated>2020-09-22T08:12:11.841Z</updated>
+    
+    <content type="html"><![CDATA[<p>JWT全称 JSON Web Token，是一种紧凑的，URL安全的请求表示方式(定义见<a href="https://tools.ietf.org/html/rfc7519">RFC7519</a>)。</p><a id="more"></a><h2 id="JWT的组成原理"><a href="#JWT的组成原理" class="headerlink" title="JWT的组成原理"></a>JWT的组成原理</h2><p>一组JWT包含三个部分：HEADER，PAYLOAD和SIGNATURE，之间由<code>.</code>分割，如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span><br></pre></td></tr></table></figure><p>在讲这三个部分如何生成之前，有三个概念需要明确：编码、签名、加密：</p><h4 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h4><p>编码是指将内容通过一定的算法将内容转换为更方便传输的形式。我们在开发中较为常见的是Base编码。编码的特征是可以进行解码，<strong>也就是说经过编码的数据任何人都可以通过相同的算法进行解码并获取到明文</strong>。所以所谓“Base64加密”等说法都是不准确的。</p><h4 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h4><p>签名是通过哈希算法生成特征码以防止内容信息被篡改，在我们日常开发中很常见到，如MD5，SHA等等。我们知道哈希算法的特点是正向快，逆向困难。所以<strong>签名通常是不可逆的</strong>。通过核对签名是否一致就可基本判断出原始内容是否有被修改。</p><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><p>说完了前两种常被误称为“加密”的算法，再说说什么才是加密。严格来说，加密是通过特定算法，配合密钥使内容变为不可读的密文。之后密文可通过特定的方法配合密钥解密为明文。加密可分为对称加密（如AES）与非对称加密（RSA）。</p><h4 id="JWT的原理"><a href="#JWT的原理" class="headerlink" title="JWT的原理"></a>JWT的原理</h4><p>说完了3个概念，我们来看看JWT的生成原理。从JWT的定义中可知，JWT的三部分组成来源为：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sign = HMACSHA256(base64.encode(header) + <span class="string">&#x27;.&#x27;</span> + base64.encode(payload), secret)</span><br><span class="line"><span class="keyword">const</span> jwt = base64.encode(header) + <span class="string">&#x27;.&#x27;</span> + base64.encode(payload) + <span class="string">&#x27;.&#x27;</span> + sign</span><br></pre></td></tr></table></figure><p>其中JWT的HEADER与PAYLOAD为明文的BASE64<strong>编码</strong>。SIGNATURE为前两者拼接后配合密钥生成的<strong>签名</strong>。这个过程中不涉及加密，我们可以轻松的通过JWT解码得到HEADER与PAYLOAD的明文。故我们不应把JWT当作加密手段来传输敏感信息。而SIGNATURE为前两者信息的签名，由于签名是不可逆的，我们不可能通过签名得到HEADER与PAYLOAD，只能用SIGNATURE与密钥来校验HEADER与PAYLOAD是否被篡改。</p><h4 id="JWT的用途"><a href="#JWT的用途" class="headerlink" title="JWT的用途"></a>JWT的用途</h4><p>知道了JWT的用途，那他的用途也就很明确了。由于第三方不能再没有密钥的情况下篡改HEADER与PAYLOAD，那么JWT可以作为存储用户信息的TOKEN在用户鉴权时颁发给用户。之后用户可以在请求中带上该TOKEN给服务端来验明正身。</p><h2 id="JWT的使用场景"><a href="#JWT的使用场景" class="headerlink" title="JWT的使用场景"></a>JWT的使用场景</h2><h4 id="发送给用户的重置密码与激活账户等链接"><a href="#发送给用户的重置密码与激活账户等链接" class="headerlink" title="发送给用户的重置密码与激活账户等链接"></a>发送给用户的重置密码与激活账户等链接</h4><p>在通过邮箱重置密码时，应用通常会发给我们一个地址，如<code>http://jiangyixiong.top/reset_password?uid=xxxx</code>，在这里如果用户的身份id以明文放在链接中，用户就很可能可以通过修改地址中的uid参数来越权修改他人账户信息。在这里我们可以以uid等信息作为PAYLOAD，服务端以密钥生成JWT，并放在地址参数中。用户虽然依旧可以通过Base64解码获得PAYLOAD中的参数，但无法修改。因为一旦参数被修改，将无法通过服务端的签名校验。由于客户端没有生成JWT的密钥，也无法伪造新的签名。</p><h4 id="作为REST-API的鉴权TOKEN"><a href="#作为REST-API的鉴权TOKEN" class="headerlink" title="作为REST API的鉴权TOKEN"></a>作为REST API的鉴权TOKEN</h4><p>在需要权限控制的REST API中，可以要求调用方在调用时提供鉴权时颁发的JWT，该JWT的PAYLOAD中会包含调用方的角色信息，权限信息，该JWT的过期时间等。服务端接收到请求后可使用密钥校验Token的有效性以确定请求发起方的身份。</p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><blockquote><p><a href="https://jishuin.proginn.com/p/763bfbd2d4b6">https://jishuin.proginn.com/p/763bfbd2d4b6</a></p><p><a href="https://blog.csdn.net/qq_28165595/article/details/80214994">https://blog.csdn.net/qq_28165595/article/details/80214994</a></p><p><a href="https://blog.csdn.net/achenyuan/article/details/80829401">https://blog.csdn.net/achenyuan/article/details/80829401</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JWT全称 JSON Web Token，是一种紧凑的，URL安全的请求表示方式(定义见&lt;a href=&quot;https://tools.ietf.org/html/rfc7519&quot;&gt;RFC7519&lt;/a&gt;)。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="http://jiangyixiong.top/categories/blog/"/>
+    
+    
+      <category term="安全" scheme="http://jiangyixiong.top/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>跨域请求与常见解决方式</title>
@@ -495,29 +518,6 @@
     
     
       <category term="Hear不同" scheme="http://jiangyixiong.top/tags/Hear%E4%B8%8D%E5%90%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>递归算法简单实现列表全排列（Python为例）</title>
-    <link href="http://jiangyixiong.top/2020/06/01/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E5%85%A8%E6%8E%92%E5%88%97%EF%BC%88Python%E4%B8%BA%E4%BE%8B%EF%BC%89/"/>
-    <id>http://jiangyixiong.top/2020/06/01/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E5%85%A8%E6%8E%92%E5%88%97%EF%BC%88Python%E4%B8%BA%E4%BE%8B%EF%BC%89/</id>
-    <published>2020-06-01T00:24:34.000Z</published>
-    <updated>2020-09-02T02:33:50.520Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="算法说明"><a href="#算法说明" class="headerlink" title="算法说明"></a>算法说明</h2><h4 id="目的："><a href="#目的：" class="headerlink" title="目的："></a>目的：</h4><p>输出给定列表array的全部排列</p><a id="more"></a><h4 id="算法步骤："><a href="#算法步骤：" class="headerlink" title="算法步骤："></a>算法步骤：</h4><ol><li>利用递归思想将n阶问题化简为n-1阶问题</li><li>面对列表[1,2,3]，我们通常写出全排列的方法为：写出以1为开头的排列[1,2,3],[1,3,2]，再写出以2为开头的排列[2,1,3],[2,3,1]依次类推</li><li>故我们在面对3元素的列表时，我们是轮流取出元素作为头，之后将其余两个元素全排列后放在第一个元素后</li><li>所以我们可以知道全排列[x1,x2,x3,…,xn]时，我们会以x1作为头部，在其后加上其余元素即[x2,x3,…,xn]的全排列；再以x2作为头部，在其后加上[x1,x3,…,xn]的全排列；直到以xn作为头部，在其后加上[x1,x2,…,xn-1]的全排列</li><li>同时设定基线条件：当列表仅有一个元素时，仅有一种排列</li></ol><h4 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">arrange</span>(<span class="params">array</span>):</span><span class="comment">#全排列数组-通过递归</span></span><br><span class="line">    output = []</span><br><span class="line">    <span class="keyword">if</span> len(array) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> [array]<span class="comment">#当数组只有一个元素时直接返回该数组</span></span><br><span class="line">    <span class="keyword">else</span>:<span class="comment">#对于多个元素的数组，全排列相当于以不同的元素首，并将其余元素分全排列</span></span><br><span class="line">        <span class="comment"># 例如全排列[1,2,3]，相当于以1为头部排列[2,3]，以2为头部排列[1,3]，以3为头部排列[1,2]</span></span><br><span class="line">        <span class="comment"># 所以全排列为[1]+arrange([2,3]),[2]+arrange([1,3]),[3]+arrange([1,2])</span></span><br><span class="line">        <span class="comment"># 推广至n个元素的数列</span></span><br><span class="line">        <span class="comment"># arrange([x1,x2,...,xn])为[x1]+arrange([x2,x3,...,xn]),[x2]+arrange([x1,x3,...,xn]),...,[xn]+arrange([x1,x2,...,xn-1])</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> array:</span><br><span class="line">            subArr = array.copy()</span><br><span class="line">            subArr.remove(i)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> arrange(subArr):</span><br><span class="line">                newArr = [i]+j</span><br><span class="line">                output.append(newArr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;算法说明&quot;&gt;&lt;a href=&quot;#算法说明&quot; class=&quot;headerlink&quot; title=&quot;算法说明&quot;&gt;&lt;/a&gt;算法说明&lt;/h2&gt;&lt;h4 id=&quot;目的：&quot;&gt;&lt;a href=&quot;#目的：&quot; class=&quot;headerlink&quot; title=&quot;目的：&quot;&gt;&lt;/a&gt;目的：&lt;/h4&gt;&lt;p&gt;输出给定列表array的全部排列&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="blog" scheme="http://jiangyixiong.top/categories/blog/"/>
-    
-    
-      <category term="Algorithm" scheme="http://jiangyixiong.top/tags/Algorithm/"/>
     
   </entry>
   
