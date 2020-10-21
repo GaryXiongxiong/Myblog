@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jiangyixiong.top/"/>
-  <updated>2020-10-13T08:36:57.691Z</updated>
+  <updated>2020-10-21T07:28:05.307Z</updated>
   <id>http://jiangyixiong.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode笔记-用桶排序与鸽笼原则解决【164-最大间距】</title>
+    <link href="http://jiangyixiong.top/2020/10/21/LeetCode%E7%AC%94%E8%AE%B0-164-%E6%9C%80%E5%A4%A7%E9%97%B4%E8%B7%9D/"/>
+    <id>http://jiangyixiong.top/2020/10/21/LeetCode%E7%AC%94%E8%AE%B0-164-%E6%9C%80%E5%A4%A7%E9%97%B4%E8%B7%9D/</id>
+    <published>2020-10-21T03:10:39.000Z</published>
+    <updated>2020-10-21T07:28:05.307Z</updated>
+    
+    <content type="html"><![CDATA[<p>给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。</p><p>如果数组元素个数小于 2，则返回 0。</p><ul><li>你可以假设数组中所有元素都是非负整数，且数值在 32 位有符号整数范围内。</li><li>请尝试在线性时间复杂度和空间复杂度的条件下解决此问题。</li></ul><a id="more"></a><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h4 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,6,9,1]</span><br><span class="line">输出: 3</span><br><span class="line">解释: 排序后的数组是 [1,3,6,9], 其中相邻元素 (3,6) 和 (6,9) 之间都存在最大差值 3。</span><br></pre></td></tr></table></figure><h4 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [10]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 数组元素个数小于 2，因此返回 0。</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>看到数<strong>组元素全部为非负整数</strong>以及<strong>线性时间复杂度的排序</strong>就想到了桶排序。桶排序简单来说就是把元素根据大小在一次遍历中放到对应的桶中。之后将每个桶中的元素依次取出组成排序后的数组。可参考<a href="http://data.biancheng.net/view/115.html">桶排序（箱排序）原理及其时间复杂度详解</a>中的图解：</p><blockquote><p>在某个期末考试中，老师要把大家的分数排序，比如有 5 个学生，分别考 5、9、5、1、6 分（满分 10 分），从大到小排序应该是 9、6、5、5、1，大家有没有办法写一段程序随机读取 5 个数，然后对它们排序呢？</p><p>看到这个问题，我们用 5 分钟想一下该怎么办。办法当然很多，这里使用桶排序的思想来处理。</p><p>我们找到 11 个桶，分别编号为 0-10，对应 0-10 分，如</p><p><img src="/images/buckets-1.jpg" alt="img"></p><p>接着我们把这些分数按照桶的编号放入桶中，如</p><p><img src="/images/buckets-2.jpg" alt="img"></p><p>接着我们从最大编号的桶到最小编号的桶依次输出每个桶中的分数，分别是 9、6、5、5、1 了。是不是很轻松地完成排序了呢？这就是桶排序的思想。</p></blockquote><p>但桶排序的问题也较为明显：在资源分布不均匀时会占用大量的空间，他的空间复杂度是O(m)，其中m位桶的个数。</p><p>所以在此题中，我们能不能直接通过桶排序并计算最大的连续空桶数呢？代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maximumGap</span>(<span class="params">self, nums</span>) -&gt; int:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums)&lt;<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="comment"># 初始化桶，桶的个数为数组中最大值</span></span><br><span class="line">    buckets = [<span class="number">0</span>]*(max(nums)+<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 把数字放入对应的桶中</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        buckets[num]+=<span class="number">1</span></span><br><span class="line">    gap:int = <span class="number">0</span></span><br><span class="line">    max_gap:int = <span class="number">0</span></span><br><span class="line">    init = <span class="literal">False</span></span><br><span class="line">    <span class="comment"># 遍历桶并数出最大连续空桶的数量</span></span><br><span class="line">    <span class="keyword">for</span> bucket <span class="keyword">in</span> buckets:</span><br><span class="line">        gap+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> bucket&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> init:</span><br><span class="line">                init = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">elif</span> gap &gt; max_gap:</span><br><span class="line">                max_gap = gap</span><br><span class="line">            gap = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> max_gap</span><br></pre></td></tr></table></figure><p>这个很莽的算法时间复杂度为O(m+n)，空间复杂度为O(m)。（你就说是不是线性复杂度吧）</p><p>提交后果不其然在<code>[2,9999999]</code>的用例上超时了。</p><p>要优化这个算法，我们就需要考虑在一个桶中放多个元素，可是如果知识单纯的扩大桶的容量，我们还是需要在每个桶中进行排序，无法降低时间复杂度到线性。看了看LeetCode的讨论贴后，发现引入鸽笼原则（或者叫抽屉原则）可以解决这个问题，这个原则很简单也很符合常识：</p><blockquote><p>在N个鸽笼中放N-m个鸽子，则至少有m个鸽笼是空的。</p><p>在N个鸽笼中放大于N个各自，则至少有一个鸽笼中有多个鸽子。</p></blockquote><p>具体到本例中，我们把N个数在桶排序时放入N+1个桶，则会产生至少1个空桶。而由于所有桶的大小是一致的，所以最大间隔一定是在一个或多个连续的空桶左右产生的。例如，我们在处理数组<code>[1,2,10,9]</code>时，我们需要将<code>[1,10]</code>这个区间均匀的分割为N+1，也就是5个区间，区间大小为<code>(10-1)//5+1=2</code>,如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1,3) [3,5) [5,7) [7,9) [9,11)</span><br></pre></td></tr></table></figure><p>这里为了包含最大值，需要为整除后的值+1。之后我们把这四个数放入如上五个桶中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[1,2],[],[],[],[9,10]</span><br></pre></td></tr></table></figure><p>可以看到中间产生了3个空桶，我们只需计算每段空桶前后两个桶中前桶的最大值与后桶的最小值便可知道一个可能为最大间距的值。得到所有空桶左右的间距后取最大间距，就是我们最终需要的答案。</p><h2 id="代码（Python为例）"><a href="#代码（Python为例）" class="headerlink" title="代码（Python为例）"></a>代码（Python为例）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maximumGap</span>(<span class="params">self, nums</span>) -&gt; int:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums)&lt;<span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    n:int = len(nums)</span><br><span class="line">    max_num:int = max(nums)</span><br><span class="line">    min_num:int = min(nums)</span><br><span class="line">    <span class="keyword">if</span> max_num==min_num:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="comment"># 计算每个桶的大小</span></span><br><span class="line">    bucket_size:int = ((max_num-min_num)//(n+<span class="number">1</span>))+<span class="number">1</span></span><br><span class="line">    <span class="comment"># 初始化桶列表</span></span><br><span class="line">    buckets = [[] <span class="keyword">for</span> row <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="comment"># 找到数字对应的桶</span></span><br><span class="line">        index:int = (num-min_num)//bucket_size</span><br><span class="line">        <span class="comment"># 把数字放入桶中</span></span><br><span class="line">        buckets[index].append(num)</span><br><span class="line">    gap:int = <span class="number">0</span></span><br><span class="line">    max_gap:int = <span class="number">0</span></span><br><span class="line">    prev_bucket = buckets[<span class="number">0</span>]</span><br><span class="line">    gapped_with_empty_bucket = <span class="literal">False</span> </span><br><span class="line">    <span class="comment"># 遍历桶列表判断空桶前后的间距</span></span><br><span class="line">    <span class="keyword">for</span> bucket <span class="keyword">in</span> buckets:</span><br><span class="line">        <span class="comment"># 若当前桶为空桶</span></span><br><span class="line">        <span class="keyword">if</span> len(bucket) == <span class="number">0</span>:</span><br><span class="line">            <span class="comment"># 修改状态为中间有空桶</span></span><br><span class="line">            gapped_with_empty_bucket = <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 若当前桶为非空桶</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 若中间有空桶</span></span><br><span class="line">            <span class="keyword">if</span> gapped_with_empty_bucket:</span><br><span class="line">                <span class="comment"># 与上一个非空桶计算间距</span></span><br><span class="line">                gap = min(bucket)-max(prev_bucket)</span><br><span class="line">                <span class="comment"># 更新最大间距</span></span><br><span class="line">                max_gap = gap <span class="keyword">if</span> gap&gt;max_gap <span class="keyword">else</span> max_gap</span><br><span class="line">                <span class="comment"># 修改状态为中间无空桶</span></span><br><span class="line">                gapped_with_empty_bucket = <span class="literal">False</span></span><br><span class="line">            <span class="comment"># 更新上一个非空桶为当前桶</span></span><br><span class="line">            prev_bucket = bucket</span><br><span class="line">    <span class="keyword">return</span> max_gap</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。&lt;/p&gt;
+&lt;p&gt;如果数组元素个数小于 2，则返回 0。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;你可以假设数组中所有元素都是非负整数，且数值在 32 位有符号整数范围内。&lt;/li&gt;
+&lt;li&gt;请尝试在线性时间复杂度和空间复杂度的条件下解决此问题。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="http://jiangyixiong.top/categories/blog/"/>
+    
+    
+      <category term="Algorithm" scheme="http://jiangyixiong.top/tags/Algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>分布式锁的Redis与Zookeeper实现</title>
@@ -482,34 +510,6 @@
     <summary type="html">
     
       &lt;p&gt;最近三位主播陆续看完了爆款出圈网剧《隐秘的角落》，正剧之外，都不约而同得去看了一些解读，由此意识到我们正处于解读一切的时代，于是我们以此作为话题进行了讨论。在节目开始的2分钟，刘轶抑制不住作为曼联球迷重回下赛季欧冠的喜悦，语无伦次了一会儿，请见谅。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="podcast" scheme="http://jiangyixiong.top/categories/podcast/"/>
-    
-    
-      <category term="Hear不同" scheme="http://jiangyixiong.top/tags/Hear%E4%B8%8D%E5%90%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hear不同 S01E02 入睡困难和刷不完的迷惑标题</title>
-    <link href="http://jiangyixiong.top/2020/07/15/Hear%E4%B8%8D%E5%90%8CS01E02%E5%85%A5%E7%9D%A1%E5%9B%B0%E9%9A%BE%E5%92%8C%E5%88%B7%E4%B8%8D%E5%AE%8C%E7%9A%84%E8%BF%B7%E6%83%91%E6%A0%87%E9%A2%98/"/>
-    <id>http://jiangyixiong.top/2020/07/15/Hear%E4%B8%8D%E5%90%8CS01E02%E5%85%A5%E7%9D%A1%E5%9B%B0%E9%9A%BE%E5%92%8C%E5%88%B7%E4%B8%8D%E5%AE%8C%E7%9A%84%E8%BF%B7%E6%83%91%E6%A0%87%E9%A2%98/</id>
-    <published>2020-07-15T00:41:01.000Z</published>
-    <updated>2020-09-02T02:24:21.345Z</updated>
-    
-    <content type="html"><![CDATA[<iframe src="https://fireside.fm/player/v2/CSKDZ64u+XVgpma-V?theme=dark" width="740" height="200" frameborder="0" scrolling="no"></iframe><p><strong>【开场BGM】</strong><br><a href="https://music.163.com/#/song?id=457761714">Griffin Oskar - Bullet Proof</a></p><p><strong>【本期营业人员】</strong><br>刘轶，<a href="https://www.weibo.com/u/1730354404">@amuro0061</a><br>陈老师，<a href="https://www.weibo.com/u/7475078094">@hearchen33</a><br>小雄，<a href="https://www.weibo.com/u/5628876835">@Gary熊了个熊</a></p><p><strong>【主题讨论】</strong><br>00:50 入睡困难时尝试了这些办法<br>01:50 沙雕新闻的标题吸引了我<br>06:00 我就想看看你们写了什么<br>08:40 欢迎给我们发律师信<br>12:10 标题党的写作公式<br>16:00 东方的克苏鲁在中国的社会新闻里<br>18:56 严肃媒体的标题讨论<br>26:00 标题真的很难写啊！我们第一期的标题被反馈不知所云<br>32:30 三段式的标题大概要长期陪伴我们了<br>35:42 沙雕新闻的标题本质上是个谜语的谜面<br>37:24 面对强烈的不安，我们会逃走，但如果不安相对较弱，则会唤起我们的好奇心</p><p><strong>【本期节目三段式的标题】</strong><br>《入睡困难？进来学习99%的人都不知道的入睡技巧，听众：一觉到天亮。》</p><p><strong>【分享环节】</strong><br>小雄：Windows端RSS订阅聚合阅读工具<br>陈老师：改善颈椎病好物第二弹<br>刘轶：不吝啬点赞</p><p><strong>【关于我们】</strong><br>“Hear不同”是一档凭直觉思维驱动的播客节目，话题多元且随机。我们谈话的目的是为了收获乐趣与自我觉察，无意也无能成为生活方式或社会思潮的引领者，君子和而不同，Hear不同。</p><p><strong>【订阅和rss】</strong><br>我们推荐使用泛用性播客客户端订阅我们的RSS进行节目的收听，地址如下：</p><p><a href="https://feeds.fireside.fm/hearbutong/rss">https://feeds.fireside.fm/hearbutong/rss</a></p><p>同时，我们的节目已在各大音频平台上线，包括喜马拉雅fm、荔枝fm、网易云音乐、Google podcast、苹果播客、小宇宙等，期待您的反馈和好评。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;iframe src=&quot;https://fireside.fm/player/v2/CSKDZ64u+XVgpma-V?theme=dark&quot; width=&quot;740&quot; height=&quot;200&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
-
-
-      
     
     </summary>
     
