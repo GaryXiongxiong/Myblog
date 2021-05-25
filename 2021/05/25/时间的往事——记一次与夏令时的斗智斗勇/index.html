@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 时间的往事——记一次与夏令时的斗智斗勇 · 蒋亦雄的博客</title><meta name="description" content="时间的往事——记一次与夏令时的斗智斗勇 - Yixiong Jiang"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://jiangyixiong.top/atom.xml" title="蒋亦雄的博客"><meta name="generator" content="Hexo 5.0.0"><link rel="alternate" href="/atom.xml" title="蒋亦雄的博客" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/categories/blog" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/categories/podcast" target="_self" class="nav-list-link">PODCAST</a></li><li class="nav-list-item"><a href="https://github.com/GaryXiongxiong" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/resume/" target="_self" class="nav-list-link">RESUME</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">时间的往事——记一次与夏令时的斗智斗勇</h1><div class="post-info">2021年5月25日</div><div class="post-content"><a id="more"></a>
+
+<h1 id="时间往事"><a href="#时间往事" class="headerlink" title="时间往事"></a>时间往事</h1><p><img src="/images/dst-1.png" alt="title"></p>
+<h2 id="1784"><a href="#1784" class="headerlink" title="1784"></a>1784</h2><blockquote>
+<p>首先，对每扇装有百叶窗以遮挡阳光的窗户征收一路易（法国货币）的税。<br>第二……在蜡商店里安排守卫，不允许任何家庭每周获得超过一磅的蜡烛供应。<br>第三，还应派人看守，阻止所有在日落后经过街道的马车，但医生、外科医生和助产士的马车除外。<br>第四，改变人们的时间，每天早晨，太阳一升起，就让每个教堂的所有钟声响起；如果这还不够？让大炮在每条街道上响起，以有效地唤醒那些迟钝的人，使他们睁开眼睛，看到他们的真正利益。<br>—— 本杰明·富兰克林 巴黎日报 1784年4月26日</p>
+</blockquote>
+<p>富兰克林看着巴黎日报上头版刊登的自己的文章，沉浸在自己辛辣的幽默感中不自觉地发出阵阵冷笑。殊不知随着这篇文章，一枚种子已经种入了人类的共同意识中——操纵时间。</p>
+<h2 id="1895"><a href="#1895" class="headerlink" title="1895"></a>1895</h2><p>比起富兰克林的调侃与嘲讽，乔治·哈德森是认真的。</p>
+<p>乔治·哈德森是一位热爱收集昆虫的昆虫学家，但他在新西兰惠灵顿邮局的工作迫使他只能在下班时间进行收集昆虫的作业。因此，下班后短暂的太阳光成为了他最珍视的东西，“要是工作时间可以根据日光调整，让我有更多的时间来收集昆虫，那就再好不过了”。在寻求变更工作时间未果后，哈德森有了一个大胆的想法。</p>
+<p>1895年，一篇论文被送到了惠灵顿哲学学会，并激起基督城（新西兰南岛最大城市）政府的极大兴趣，这篇论文提议在每年的夏天，将时钟向前拨动两个小时，以最大重合人们的活动时间与日照时间。而这篇文章的署名正是乔治·哈德森。</p>
+<h2 id="1916"><a href="#1916" class="headerlink" title="1916"></a>1916</h2><p>在第一次世界大战中，为了节省宝贵的战时能源。德意志帝国与其盟友奥匈帝国在1916年4月30日凌晨，将其时钟向后拨动了一小时，成为了最早的两个在全国范围采用夏令时制的国家。而站在他们对立面的英联邦与许多欧洲中立国很快就跟进了。俄罗斯和其他一些国家则等到了第二年。而美国在1918年采用了夏令时。虽然之后大多数国家在战争结束后的几年里放弃了夏令时，但随着时间来到爆发能源危机的70年代，夏令时再一次开始变得普遍，并一直维持至今。</p>
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><p>2021年4月4日，澳洲东部时间凌晨2点59分59秒，一秒钟后，当地的所有时钟将会向前移动一个小时，回到2点整，一如往年。</p>
+<p>于此同时，一名base在中国西安的程序猿正在家中安然沉睡。</p>
+<p>第二天，他所在澳洲某项目组发现，部署在AWS悉尼的E2E test产生了大量报错。其中共同点，是这些错误全部与时间计算有关。经过一系列的Debug，他们定位到了正在使用中，名为Day.js的Datetime Utils ，这个已经稳定使用半载的dependency在一夜之间出现了行为异常。</p>
+<p>就在这个程序猿和他所在的团队焦头烂额百思不得其解时，本杰明·富兰克林的冷笑仿佛引力波一般穿越百年的时光，来到了他们耳畔。</p>
+<h1 id="记一次与时间的斗智斗勇"><a href="#记一次与时间的斗智斗勇" class="headerlink" title="记一次与时间的斗智斗勇"></a>记一次与时间的斗智斗勇</h1><h2 id="事件回顾"><a href="#事件回顾" class="headerlink" title="事件回顾"></a>事件回顾</h2><p>好了我不装了我摊牌了，我说的这个程序猿就是我自己。</p>
+<p>在前一段时间，我们项目组遇到了由于DST（即上文提到的Daylight saving time，又称日光节约时间，或夏令时）产生的时间计算问题。</p>
+<p>这次事件的起因是，我们项目中用到的Day.js时间计算工具，在系统时间是AEDT（澳洲东部夏令时）时表现正常，但当系统时间变为AEST（澳洲东部标准时）时，他的时间计算功能就会出现异常。同时，我们集成的系统严格要求我们传输的时间为ISO格式的当地时间，这也对我们时区转换的准确性提出了更高的要求。为了解决这个问题，我们决定替换Day.js，并集中封装出一个Datetime utils来统一处理时间计算。这个Datetime utils在我们的开发过程中前前后后换过数个时间计算库，但他们的表现都不算完美。为了解决这些问题我们调研了TypeScript生态下常用的时间计算库，并趟过了不少坑，所以借这篇文章分享下我们学到的一些时间表示与夏令时相关知识，希望能对大家有所帮助。</p>
+<h2 id="时间的表示"><a href="#时间的表示" class="headerlink" title="时间的表示"></a>时间的表示</h2><p>早在计算机出现很久以前，人类就有了一套通用且完善的描述时间的方法。</p>
+<p><img src="/images/dst-2.png" alt="title"></p>
+<p>这是我们随处可见的一篇新闻稿，其中的时间表示如下：</p>
+<blockquote>
+<p>2021年5月11日 （星期二）上午10时</p>
+</blockquote>
+<p>配合着新闻的地区信息，我们便得到了一个精准的时间点：</p>
+<blockquote>
+<p>2021年5月11日 10点0分0秒 北京时间</p>
+</blockquote>
+<p>之后，我们可以让这个时间点的表示更为国际化：</p>
+<blockquote>
+<p>2021-05-11 10:00:00 GMT +08:00 （国际化表示）<br>⬇️<br>2021-05-11T10:00:00.000+08:00:00 （ISO格式表示）<br>⬇️<br>2021-05-11T02:00:00.000Z （转换为UTC时间并以ISO格式表示）</p>
+</blockquote>
+<p>为了让时间点可以在计算机中完美的表示，我们计算出当前时间距离世界标准时的1970年1月1日0点0分0秒的毫秒数进行存储，这个数值被称为时间戳。这个时间戳由计算机根据机器的时间表示，时区等设置进行解析。</p>
+<blockquote>
+<p>1620698400000</p>
+</blockquote>
+<h2 id="GMT与UTC"><a href="#GMT与UTC" class="headerlink" title="GMT与UTC"></a>GMT与UTC</h2><p>在时间的表示一节中，我们见识到了两个‘黑话’：GMT和UTC，两个词其实指向的是两个不同的概念，只是由于具体含义十分相近以至于在很多地方都是混用的，用以表示世界标准时间，即+0区的时间。</p>
+<p>GMT为Greenwich Mean Time的缩写，意为格林威治观测时间。是坐落在0经度线上的英国格林威治天文台观测并发布的当地时间。从1925年至1972年，他都被用作世界标准时间。</p>
+<p>UTC的概念则是建立于1972年，以弥补地球自转速度减慢的问题。这个时间系统以国际原子时为基础，使用铯的原子频率来设定时间标准。换句话说，UTC是GMT的更精确的替代系统。</p>
+<blockquote>
+<p>UTC名字的来源是在建立这套计时系统时，英语国家们希望将其命名为CUT (Coordinated Universal Time)，而法语国家则希望将其命名为TUC (Temps Universal Coordonn)。最终各退一步，取了个没有实际含义的名字：UTC。</p>
+</blockquote>
+<h2 id="Offset与Timezone"><a href="#Offset与Timezone" class="headerlink" title="Offset与Timezone"></a>Offset与Timezone</h2><p>说完了时间表示中提到的GMT与UTC，下来说一说时间表示中最后的一部分：+08:00:00</p>
+<p>这个部分被称为offset，意指为当地时间相较于UTC的偏移量。+08:00:00的具体含义就是，比UTC时间快8个小时。基于当地时间与当地的offset，我们可以轻松的计算出当时的UTC时间：</p>
+<p>$$local_time - offset = UTC_time$$</p>
+<p>需要注意的是,offset ≠ timezone，我们所说的东八区，西一区等这些概念指的并不是timezone（时区），而是一组offset为+08:00:00的时区的集合。一个🌰见下图：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">东八区 = &#123;CST（中国标准时）,SGT（新加坡时间）,AWST（澳洲西部标准时）... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>截至目前，一切看起来还不算复杂，offset是timezone的一个属性，一个offset可以对应多个timezone。但当DST出现后，事情坏了起来。</p>
+<h2 id="DST"><a href="#DST" class="headerlink" title="DST"></a>DST</h2><p>DST (Daylight saving time)，日光节约时，夏令时/冬令时，这个奇怪的小精灵有着多个名字。它会在每年春天的某一天将时钟向后拨一小时，又在秋天的某一天将时钟向前拨动一个小时。</p>
+<p>因为DST，一个timezone开始在不同的时间段对应不同的offset。我们的鬼故事就此展开：</p>
+<ul>
+<li>在悉尼，2021年4月4日凌晨2点59分59秒后，时针会回滚并再次指向2点</li>
+<li>之后，在2021年10月3日凌晨1点59分59秒后，时针会跳过2点直接指向3点，随之而来的是⬇️</li>
+<li>悉尼人会经历两次2021年4月4日凌晨2点到3点！！</li>
+<li>2021年10月3日凌晨2点到3点在悉尼不存在！！</li>
+<li>这种事情每年都会发生！！</li>
+</ul>
+<p>那。。。能不能再恐怖点？</p>
+<ul>
+<li><strong>每年切换DST和ST的时间都会变！！！</strong></li>
+</ul>
+<p>是的，每年应用DST的时间段是不固定的，各个国家可以根据近年日照情况灵活调整。我们可以在IANA的网站上查询到各国的夏令时数据库。这个数据库每年都会根据各国官方组织提供的数据更新。我们从中摘录出2021-01-24版本中悉尼时间的部分作展示：</p>
+<p><img src="/images/dst-3.png" alt="title"></p>
+<p>可以看到在2008年之前，澳洲东部的夏令时的时间每隔3、5年都会变化一次，好在2008年之后暂时固定了下来，在每年十月的第一个周日切换至夏令时，在每年四月的第一个周日切回冬令时。</p>
+<p>这种不规律的变化会怎么影响我们日期的计算？我们继续向下看。</p>
+<h2 id="TypeScript生态下如何处理时间"><a href="#TypeScript生态下如何处理时间" class="headerlink" title="TypeScript生态下如何处理时间"></a>TypeScript生态下如何处理时间</h2><p>面对时间的计算，我们通常会采用下列表格中的工具/库，但经过这段时间的调研，我们发现他们都不完美，在此简要的列举下我们的一些发现：</p>
+<ul>
+<li>Date：最基础的日期工具<ul>
+<li>JS原生类型</li>
+<li>提供一些十分基础的方法，无法应对日期计算等工作</li>
+</ul>
+</li>
+<li>Moment.js：后端项目首选，如果需要计算1970前、2039后的夏令时时间，记得手动计算并添加夏令时数据<ul>
+<li>老牌日期工具库，功能完善API友好</li>
+<li>提供完善的单元测试以保证计算正确性</li>
+<li>时区数据全，但仅覆盖了1970-2039年，超出部分需自行生成数据填充</li>
+<li>自动解析字符串能力较弱，需要解析时手动提供格式</li>
+<li>数据包较大，完整版不适合前端工程使用</li>
+<li>目前该项目不再更新Feature，仅做维护</li>
+</ul>
+</li>
+<li>Day.js：<del>东北半球最好的时间工具，</del>如果你不需要跨时区/夏令时的计算，并且确认你的项目不会跑在系统时区有夏令时设置的环境中，选它基本没问题<ul>
+<li>比较受欢迎的日期工具库，提供类Moment.js的API</li>
+<li>相较于Moment.js，提供immutable的实例对象</li>
+<li>在系统时区有夏令时时，会有几率产生日期计算bug</li>
+<li>在系统时区有夏令时时，时区转换会计算错误</li>
+</ul>
+</li>
+<li>Spacetime：轻量级时间工具，bug不少，未来可期<ul>
+<li>优秀的自动字符串解析能力</li>
+<li>较为准确的跨时区/夏令时转换与计算</li>
+<li>夏令时数据不够严谨（例如悉尼时区，写死了每年4月3日和10月3日切换夏令时）</li>
+<li>部分可work around的小问题</li>
+</ul>
+</li>
+<li>其他可供选择的日期工具<ul>
+<li>fns-date</li>
+<li>Luxon</li>
+</ul>
+</li>
+</ul>
+<h2 id="一个Datetime-Utils面对的挑战"><a href="#一个Datetime-Utils面对的挑战" class="headerlink" title="一个Datetime Utils面对的挑战"></a>一个Datetime Utils面对的挑战</h2><p>看了看这些库，是不是觉得TypeScript生态弱爆了，一个能打的时间工具都没有？其实这真不怪TypeScript生态不好，更不是这些时间工具的开发者水平不行。而是开发一个全世界世界各个时区都能放心使用，并保证计算准确性的Datetime Utils真的太难了！有多难？不如用我们的人类大脑来试试计算下面这些问题<del>，需要正确答案可以联系我</del>：</p>
+<ul>
+<li>02/01/2021 表示几月几日？</li>
+<li>现在是悉尼1999年10月30日下午6点，12个小时以后是什么时间？</li>
+<li>悉尼2051年4月2日是夏令时（AEDT）还是冬令时（AEST）？</li>
+<li>悉尼2021年4月3日凌晨2点30分对应UTC时间是什么？</li>
+<li>当我们谈论加一年时，具体指加多少天？2020年2月29日加上一年是2021年几月几日？加一年是加多少天？</li>
+<li>当我问谈论加一月时，具体指加多少天？1月31日加上一个月之后是几月几日？加一个月是多少天？</li>
+<li>1月31日到2月15日隔了多少个月？可以用小数表示吗？</li>
+</ul>
+<p>这些tricky的问题不是我故意想来为难各位，而是真的在我们的项目中遇到甚至因为计算问题引发了bug。这些问题目前都已经覆盖在了单元测试中。</p>
+<p>汇总下这些问题，我们可以知道，一个Datetime Utils，会遇到如下这些挑战：</p>
+<p><img src="/images/dst-4.png" alt="title"></p>
+<p>在我们封装自用的Datetime utils的过程中，也总结出了一些观点：</p>
+<ul>
+<li>针对使用场景选择合适的三方库。没有最好的工具，只有最适合的工具。</li>
+<li>在应用中集中封装管理时间计算逻辑。对于同一个项目，一定要对时间的计算逻辑有一个团队共识。并将这些共识统一实现并封装在一处，以保证项目的行为一致性。</li>
+<li>大量覆盖单元测试（较难实践，例如moment.js提供了160531个test case）。</li>
+<li>采用时间戳/UTC ISO传输时间，这种格式的时间各类计算工具/库解析的逻辑基本都是一致的，不会产生歧义。</li>
+<li>服务端计算，这属于本人的一点拙见。对于时间这类标准存在变化且时效性较强的计算，个人认为十分适合放在由权威机构提供的服务端进行，类似于现在的授时服务。</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这是我第一次写这类博客，对于相关知识也全靠这段时间的恶补，如果错误还请斧正。这篇博客与其说是分享不如说是对夏令时制度的吐槽。在我看来夏令时这种比较无规律的修改“全局变量”的行为是比较容易产生问题的。2007年的美国就因更新了DST规则而导致大量软件出现问题。</p>
+<blockquote>
+<p>Changes to DST rules cause problems in existing computer installations. For example, the 2007 change to DST rules in North America required that many computer systems be upgraded, with the greatest impact on e-mail and calendar programs. The upgrades required a significant effort by corporate information technologists.</p>
+</blockquote>
+<p>为了达到节能的效果与其调整时钟，不如直接调整上班时间来的实在且可行。就像我们上学时的冬季作息和夏季作息一样（笑）。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://toastui.medium.com/handling-time-zone-in-javascript-547e67aa842d">Handling Time Zone in JavaScript</a></p>
+<p><a target="_blank" rel="noopener" href="https://paperspast.natlib.govt.nz/periodicals/TPRSNZ1895-28.2.7.1.5">On Seasonal Time-adjustment in Countries South of Lat. 30°</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pluralsight.com/courses/date-time-fundamentals">Pluralsight : Date and Time Fundamentals</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Time_zone">Wikipedia : timezone</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Daylight_saving_time">Wikipedia : DST</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Unix_time">Wikipedia : Unix Time</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/ISO_8601">Wikipedia : ISO-8601</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.iana.org/time-zones">IANA timezone Database</a></p>
+<p><a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/dst2007">Microsoft Daylight Saving Time &amp; Time Zone Blog</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">MDN : Date API</a></p>
+<p><a target="_blank" rel="noopener" href="https://momentjs.com/timezone/">Moment Timezone</a></p>
+<p><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1123">RFC-1123</a></p>
+<p><a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc2822">RFC2888</a></p>
+</div></article></div></main><footer><div class="paginator"><a href="/2021/01/28/LeetCode%E7%AC%94%E8%AE%B0-%E7%94%A8%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%A7%A3%E5%86%B3%E3%80%90120-%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%E3%80%91/" class="next">NEXT</a></div><div class="copyright"><p><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv">页面访问量:<span id="busuanzi_value_page_pv"></span></span></p><p>© 2018 - 2021 <a href="http://jiangyixiong.top">Yixiong Jiang</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
